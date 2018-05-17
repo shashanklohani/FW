@@ -1,0 +1,285 @@
+<html>
+    <head>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet">
+    </head>
+    <head>
+        <style>
+            .container{
+                background: whitesmoke;
+                margin: 0px 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header{
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                height: 100px;
+            }
+
+            .left-item{
+                width: 10%;
+            }
+
+
+            .logo{
+                justify-content: center;
+                align-items: center;
+                font-size: 40px;
+                display: flex;
+                width: 80%;
+                height: auto;
+            }
+
+            .cart{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 10%;
+            }
+
+            .label{
+                line-height: 50px;
+                margin-bottom: 20px;
+                background: darkslategray;
+                display: flex;
+                flex-wrap: wrap;
+                justify-items: center;
+                width: 100%;
+                height:50px;
+            }
+
+            .mens-outwear{
+                text-align: center;
+                margin-left: 30%;
+                width: 10%;
+            }
+
+            .ladies-outwear{
+                text-align: center;
+                width: 10%;
+            }
+
+            .mens-tshirt{
+                text-align: center;
+                width: 10%;
+            }
+            
+            .ladies-tshirt{
+                text-align: center;
+                width: 10%;
+            }
+
+            .mens-outwear-img{
+                width: 100%;
+                height: auto;
+            }
+            .ladies-outwear-img{
+                width: 100%;
+                height: auto;
+            }
+
+            .header-bottom{
+                width: 100%;
+                background: indigo;
+                height: 20px;
+            }
+
+            .image-div{
+                width: 100%;
+                display: block;
+            }
+
+            .list-wear{
+              height: auto; 
+              width: 100%;
+              display: flex;
+              flex-wrap: wrap;  
+            }
+
+            wear{
+                height: auto;
+                width: 25%;
+                background: red;
+            }
+
+            .label .link{
+                color: wheat;
+            }
+
+            .link{
+                text-decoration: none;
+            }
+
+            .logo .link{
+                color: black
+            }
+
+            .material-icons{
+                display: flex;
+                font-size: 48px;
+                color: blueviolet;
+                justify-content: center;
+            }
+
+            .h2{
+                display: block;
+            }
+            
+            .shop-button{
+                font-size: 20px;
+                border-width: 2px;
+                border-color: black;
+                padding: 5px 30px;
+                background: white
+            }
+
+            .shop-now-1{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .shop-now-2{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .shop-now-bottom{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+            }
+
+            .shop-now-left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+                height: auto;
+            }
+
+            .shop-now-right {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+                height: auto;
+            }
+
+            .img-left-shop-now{
+                max-width: 100%;
+            }
+
+            .img-right-shop-now{
+                max-width: 100%;
+            }
+
+            .demo{
+                background: black;
+                text-align: center;
+                color: aliceblue;
+                line-height: 50px;
+            }
+
+            /* @media screen and (max-width: 900px){
+
+            .container{
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: unset;
+            }
+
+            .header{
+                order: 1;
+            }
+
+            .label{
+                order: 2;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .shop-now-1{
+                order: 3;
+            }
+
+            .mens-outwear{
+                order: 1;
+                margin-left: 0%;
+                text-align: center;
+                width: 100%;
+            }
+
+            .ladies-outwear{
+                order: 2;
+                text-align: center;
+                width: 100%;
+            }
+
+            .mens-tshirt{
+                order: 3;
+                text-align: center;
+                width: 100%;
+            }
+
+            .ladies-tshirt{
+                order: 4;
+                text-align: center;
+                width: 100%;
+            }
+            } */
+
+        </style>
+        <div class="container">
+            <header class="header">
+                <div class="left-item"></div>
+                <div class="logo" style="display: flex;"><a href="" class ="link">SHOP</a></div>
+                <div class="cart"><i class="material-icons">shopping_cart</i></div>
+            </header>
+            <div class="label">
+                <div class="mens-outwear"><a  href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Mens Outwear</a></div>
+                <div class="ladies-outwear"><a href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Ladies Outwear</a></div>
+                <div class="mens-tshirt"><a href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Mens Tshirt</a></div>
+                <div class="ladies-tshirt"><a href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Ladies Tshirt</a></div>
+            
+            </div>
+            <div class="shop-now-1">
+            <div class="mens-outwear-img"><img class="image-div" src="mens_outerwear.jpg" alt=""></div>
+
+            <h2 class="h2">Men's Outwear</h2>
+            <button class="shop-button"><a class="link" href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html">SHOP NOW</a></button>
+            </div>
+            
+            <div class="shop-now-2">
+                <div class="ladies-outwear-img"><img class="image-div" src="ladies_outerwear.jpg" alt=""></div>
+    
+                <h2 class="h2">Ladies Outwear</h2>
+                <button class="shop-button"><a class="link" href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html">SHOP NOW</a></button>
+            </div>
+
+            <div class="shop-now-bottom">
+                <div class="shop-now-left"><img class="img-left-shop-now" src="mens_tshirts.jpg" alt="">
+                    <h2>Men's T-shirts</h2>
+                    <button class="shop-button"><a class="link" href="">SHOP NOW</a></button>
+                </div>
+                <div class="shop-now-right"><img class="img-right-shop-now" src="ladies_tshirts.jpg" alt="">
+                    <h2>Ladies T-shirts</h2>
+                    <button class="shop-button"><a class="link" href="">SHOP NOW</a></button>
+                </div>
+            </div>
+
+            <footer>
+                <h3>Made By ________</h3>
+                <div class="demo">DEMO
+                </div>
+            </footer>
+        </div>
+    </head>
+</html>

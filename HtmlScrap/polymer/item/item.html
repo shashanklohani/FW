@@ -1,0 +1,223 @@
+<html>
+    <head>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <style>
+            .container{
+                background: whitesmoke;
+                margin: 0px 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .header{
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                height: 100px;
+            }
+            .left-item{
+                width: 10%;
+            }
+
+            .logo .link{
+                color: black
+            }
+            
+            .material-icons{
+                display: flex;
+                font-size: 48px;
+                color: blueviolet;
+                justify-content: center;
+            }
+
+            .logo{
+                justify-content: center;
+                align-items: center;
+                font-size: 40px;
+                display: flex;
+                width: 80%;
+                height: auto;
+            }
+
+            .cart{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 10%;
+            }
+
+            .link{
+                text-decoration: none;
+                color: wheat;
+            }
+
+            .label{
+                line-height: 50px;
+                margin-bottom: 20px;
+                background: darkslategray;
+                display: flex;
+                flex-wrap: wrap;
+                justify-items: center;
+                width: 100%;
+                height:50px;
+            }
+            
+            .mens-outwear{
+                text-align: center;
+                margin-left: 30%;
+                width: 10%;
+            }
+
+            .ladies-outwear{
+                text-align: center;
+                width: 10%;
+            }
+
+            .mens-tshirt{
+                text-align: center;
+                width: 10%;
+            }
+            
+            .ladies-tshirt{
+                text-align: center;
+                width: 10%;
+            }
+
+            .link{
+                text-decoration: none;
+                color: black;
+            }
+
+            .item-selected{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+            }
+
+            .item-img{
+                width: 45%;
+            }
+
+            .item-selected-desc{
+                display: flex;
+                flex-direction: column;
+                width: 55%;
+            }
+            .img{
+                width: 100%;
+                height: 400px;
+            }
+
+            .h1{
+                text-align: center;
+                font-weight: 100;
+            }
+
+            .price{
+                font-size: 20px;
+                margin-left: 166px;
+            }
+
+            .picker1{
+                display: flex;
+                flex-direction: row;
+            }
+
+            .size-label{
+                margin: 20px 40px;
+            }
+
+            .select-size{
+                margin: 10px 20px 10px 40px;
+                font-size: 16px;
+                width: 415px;
+                border: none;
+                background: lightgrey;
+            }
+
+            .picker2{
+                margin-top: 10px;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .quantity-label{
+                margin: 20px 40px;
+            }
+
+            .select-quantity{
+                margin: 10px 20px 10px 12px;
+                font-size: 16px;
+                width: 415px;
+                border: none;
+                background: lightgrey;
+            }
+
+            .description{
+                margin: 10px 30px;
+            }
+
+
+        </style>
+    <div class="container">
+    <header class="header">
+        <div class="left-item"></div>
+        <div class="logo" style="display: flex;"><a href="" class ="link">SHOP</a></div>
+        <div class="cart"><i class="material-icons">shopping_cart</i></div>
+    </header>
+
+    <div class="label">
+            <div class="mens-outwear"><a  href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Mens Outwear</a></div>
+            <div class="ladies-outwear"><a href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Ladies Outwear</a></div>
+            <div class="mens-tshirt"><a href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Mens Tshirt</a></div>
+            <div class="ladies-tshirt"><a href="file:///D:/GitProjects/HtmlScrap/polymer/MensOutwear/mensoutwear.html" class ="link">Ladies Tshirt</a></div>
+        </div>
+
+        <div class="item-selected">
+            <div class="item-img"><img  class="img" src="tshirt1.jpg" alt=""> </div>
+            <div class="item-selected-desc">
+                <h1 class="h1">Men's Tech Shell Full-Zip</h1>
+                <div class="price">133.00$</div>
+                <div class="picker1">
+                    <label class="size-label">Size</label>
+                    <select name="sizeselect" id="" class="select-size">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+                <div class="picker2">
+                        <label class="quantity-label">Quantity</label>
+                        <select name="quantityselect" id="" class="select-quantity">
+                            <option value="S">1</option>
+                            <option value="M">2</option>
+                            <option value="L">3</option>
+                            <option value="XL">4</option>
+                        </select>
+                </div>
+
+                <div class="description">
+                    <h2 class="h2">Description</h2>
+                    <p class="p">The ultimate in fit and fabric, this Vastrm hoodie doesn't disappoint. Made from soft pique fabric, the lightweight full-zip features a halfmoon accent and matching hoodie strings.</p>
+                    <div><br></div>
+                    <div>Additional Features:</div>
+                    <div>
+                        <ul>
+                            <li>100% Cotton</li>
+                            <li>Hidden phone pocket neatly cradles your digital device.</li>
+                            <li>Available in charcoal grey with red strings and hood. White Google logo is embroidered at left bicep.</li>
+                        </ul>
+                    </div>
+                    <button class="cart-button"><a class="link" href="">ADD TO CART</a></button>
+                </div>
+                <!-- <div class="btn"></div><button class="cart-button"><a class="link" href="">ADD TO CART</a></button></div> -->
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

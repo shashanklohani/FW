@@ -1,0 +1,55 @@
+<html>
+    <head></head>
+    <body>
+        <style>
+        .container{
+            height: 50%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }    
+
+        .red-box{
+            order: 1;
+            width: 100%;
+            background: red;
+        }
+
+        .blue-box{
+            order: 2;
+            width: 100%;
+            background: blue;
+        }
+        .green-box{
+            order: 3;
+            width: 100%;
+            background: green;
+        }
+
+        @media screen and (min-width: 600px){
+            .red-box{
+                width: 25%;
+            }
+            .blue-box{
+                width: 75%;
+            }
+
+        }
+
+        @media screen and (min-width: 900px){
+            .red-box, .green-box{
+                width: 25%;
+            }
+            .blue-box{
+                width: 50%;
+            }
+        }
+
+        </style>
+        <div class="container">
+            <div class="red-box"></div>
+            <div class="blue-box"></div>
+            <div class="green-box"></div>
+        </div>
+    </body>
+</html>

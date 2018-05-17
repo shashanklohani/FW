@@ -1,0 +1,64 @@
+l<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scrap Flex</title>
+</head>
+
+<Body>
+        <style>
+                .container{
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    height: 100%;
+                }
+                .header{
+                    order: 8;
+                    width: 100%;
+                    background: black;
+                }
+                .red-box{
+                    order: 2;
+                    width: 33%;
+                    background: red;
+                }
+                .blue-box{
+                    order: 3;
+                    width: 33%;
+                    background: blue;
+                }
+                .yellow-box{
+                    order: 4;
+                    width: 34%;
+                    background:yellow;
+                }
+                .green-box{
+                    order: 5;
+                    width: 50%;
+                    background: mediumspringgreen;
+                }
+                .voilet-box{
+                    order: 6;
+                    width: 50%;
+                    background: hotpink;
+                }
+                .footer{
+                    order: 7;
+                    width: 100%;
+                    background:maroon;
+                }
+            </style>
+            
+    <div class="container">
+        <header class="header"></header>
+        <div class="red-box"></div>
+        <div class="blue-box"></div>
+        <div class="yellow-box"></div>
+        <div class="green-box"></div>
+        <div class="voilet-box"></div>
+        <footer class="footer"></footer>
+    </div>
+</Body>
+</html>
