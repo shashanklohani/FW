@@ -1,0 +1,345 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body onload="startGame()">
+    <style>
+        .container {
+            background-image: url('background-image.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .deck {
+            justify-content: space-around;
+            align-content: space-around;
+            display: flex;
+            flex-wrap: wrap;
+            width: 500px;
+            height: 500px;
+            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+            border-radius: 8px;
+            background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+        }
+
+        .card {
+            background: white;
+            width: 22%;
+            height: 22%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(179, 245, 212);
+            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+            border-radius: 8px;
+            /* animation-name: divAnim; */
+        }
+
+        .img {
+            display: initial;
+            /* animation-name: imgAnim; */
+        }
+
+        @keyframes divAnim {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(30deg);
+            }
+        }
+
+        @keyframes divReturnAnim {
+            from {
+                transform: rotate(60deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+        /* @keyframes imgAnim {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(30deg);
+            }
+        } */
+
+        .header {
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+
+        h3 {
+            font-size: 50px;
+            font-family: 'Kaushan Script', cursive;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            /* margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 4px; */
+        }
+
+        .score-panel {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 500px;
+            background: white;
+            height: 100px;
+            opacity: .5;
+            border-radius: 8px;
+        }
+
+        .h2 {
+            opacity: 1;
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        .restartButton {
+            border-radius: 8px;
+            border: 2px solid black;
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        .score {
+            font-family: 'Kaushan Script', cursive;
+        }
+
+    </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        var cardOpened = [];
+        var moves = 3;
+
+        function show(id) {
+            debugger;
+            document.getElementById(id).style["animation-name"] = "divAnim";
+            document.getElementById(id).style["animation-duration"] = "500ms";
+            debugger;
+            setTimeout(function () { reset(id); }, 500);
+        }
+
+        function reset(id) {
+            document.getElementById(id).style["animation-name"] = "";
+            document.getElementById(id).style["animation-duration"] = "500ms";
+        }
+
+        function startGame() {
+            shuffle();
+            setTimeout(function () { hideAll(); }, 2000);
+        }
+
+        function hideAll() {
+            debugger;
+            for (i = 1; i <= 16; i++) {
+                id = "card" + i;
+                var elem = document.getElementById(id);
+                elem.querySelector("#img").style.display = "none";
+            }
+        }
+
+        function shuffle() {
+            var arrOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+            arrOrder = shuffleArray(arrOrder);
+            shuffleDeck(arrOrder);
+            debugger;
+        }
+
+        function shuffleArray(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            while (0 !== currentIndex) {
+
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+            return array;
+        }
+
+        function shuffleDeck(arr) {
+            for (i = 0; i < 16; i++) {
+                var id = "card" + (i + 1);
+                document.getElementById(id).style.order = arr[i] + "";
+                var id = "card" + i;
+            }
+        }
+
+        function showImg(elemId) {
+            show(elemId.id);
+            elemId.querySelector("#img").style.display = "initial";
+            createListOpenCards(elemId.id);
+            matchCard();
+            debugger;
+        }
+
+        function createListOpenCards(clicked_id) {
+            cardOpened.push(clicked_id);
+        }
+
+        function matchCard() {
+            if (cardOpened.length % 2 == 0 && cardOpened.length > 0) {
+                var elem1 = document.getElementById(cardOpened[cardOpened.length - 1]);
+                var elem2 = document.getElementById(cardOpened[cardOpened.length - 2]);
+
+                var id1 = elem1.id;
+                var id2 = elem2.id;
+
+                var img1 = elem1.getElementsByTagName('img')[0];
+                var img1src = img1.src;
+                var n = img1src.lastIndexOf('/');
+                var img1Name = img1src.substring(n + 1);
+
+                var img2 = elem2.getElementsByTagName('img')[0];
+                var img2src = img2.src;
+                var m = img2src.lastIndexOf('/');
+                var img2Name = img2src.substring(n + 1);
+
+                if (img1Name != img2Name) {
+                    elem1.querySelector("#img").style.display = "none";
+                    elem2.querySelector("#img").style.display = "none";
+                    cardOpened.splice(cardOpened.length - 2, 2);
+                    moves--;
+                    changeMove(moves);
+                }
+            }
+            if (cardOpened.length % 2 == 0) {
+                score(cardOpened.length / 2);
+            }
+
+            if (moves == 0) {
+                debugger;
+                gameOver();
+            }
+        }
+
+        function subString(str) {
+            var n = str.lastIndexOf('/');
+            return str.subString(n + 1);
+        }
+
+        function restart() {
+            changeMove(3);
+            closeAll();
+            var score = document.getElementById("score").innerHTML;
+            swal("Your Score is " + score);
+            if (cardOpened.length > 0) {
+                closeAll();
+            }
+            document.getElementById("score").innerHTML = 0 + "";
+            debugger;
+        }
+
+        function closeAll() {
+            for (i = 0; i < cardOpened.length; i++) {
+                var elem = document.getElementById(cardOpened[i]).children[0];
+                elem.style.display = "none";
+            }
+        }
+
+        function changeMove(mve) {
+            document.getElementById("h2").innerHTML = mve + " Moves";
+        }
+
+        function score(screNum) {
+            document.getElementById("score").innerHTML = screNum + "";
+            debugger;
+        }
+
+        function gameOver() {
+            swal("Game Over");
+            closeAll();
+            changeMove(3);
+            score(0);
+            moves = 3;
+        }
+        // function gameEnd(){
+        //     while(moves == 0){
+        //         swal("Your Score is " + cardOpened.length/2);
+        //     }
+        // }
+    </script>
+
+    <div id="container" class="container">
+        <header id="header" class="header">
+            <h3>Matching Game</h3>
+        </header>
+        <div class="score-panel" id="score-panel">
+            <h2 id="h2" class="h2">3 Moves</h2>
+            <button class="restartButton" id="restartButton" onclick="restart()">Restart</button>
+            <div class="score" id="score">0
+            </div>
+        </div>
+
+        <div id="deck" class="deck">
+            <div class="card animated bounce" id="card1" onclick="showImg(this)">
+                <img class="img" id="img" src="amd.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card2" onclick="showImg(this)">
+                <img class="img" id="img" src="chrome.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card3" onclick="showImg(this)">
+                <img class="img" id="img" src="ebay.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card4" onclick="showImg(this)">
+                <img class="img" id="img" src="intel.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card5" onclick="showImg(this)">
+                <img class="img" id="img" src="internet-explorer.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card6" onclick="showImg(this)">
+                <img class="img" id="img" src="photoshop.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card7" onclick="showImg(this)">
+                <img class="img" id="img" src="playstore.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card8" onclick="showImg(this)">
+                <img class="img" id="img" src="windows.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card9" onclick="showImg(this)">
+                <img class="img" id="img" src="chrome.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card10" onclick="showImg(this)">
+                <img class="img" id="img" src="windows.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card11" onclick="showImg(this)">
+                <img class="img" id="img" src="photoshop.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card12" onclick="showImg(this)">
+                <img class="img" id="img" src="intel.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card13" onclick="showImg(this)">
+                <img class="img" id="img" src="amd.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card14" onclick="showImg(this)">
+                <img class="img" id="img" src="ebay.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card15" onclick="showImg(this)">
+                <img class="img" id="img" src="internet-explorer.png" alt="">
+            </div>
+            <div class="card animated bounce" id="card16" onclick="showImg(this)">
+                <img class="img" id="img" src="playstore.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

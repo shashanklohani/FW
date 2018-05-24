@@ -85,26 +85,30 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
 
-        function myFunction2() {
-            document.getElementsByClassName("circleGreen").swal = swal("Good job!", "You clicked Green button!", "success");
+        function myFunction(c) {
+            switch (c) {
+                case 'Yellow':
+                    swal("Good job!", "You clicked Yellow button!", "success");
+                    break;
+                case 'Green':
+                    swal("Good job!", "You clicked Green button!", "success");
+                    break;
+                case 'Red':
+                    swal("Good job!", "You clicked Red button!", "success");
+                    break;
+                case 'Blue':
+                    swal("Good job!", "You clicked Blue button!", "success");
+                    break;
+            }
         }
-        function myFunction1() {
-            document.getElementsByClassName("circleYellow").swal = swal("Good job!", "You clicked Yellow button!", "success");
-        }
-        function myFunction3() {
-            document.getElementsByClassName("circleRed").swal = swal("Good job!", "You clicked Red button!", "success");
-        }
-        function myFunction4() {
-            document.getElementsByClassName("circleBlue").swal = swal("Good job!", "You clicked Blue button!", "success");
-        }
-        
+
     </script>
 
     <div class="container">
-        <div class="circleYellow" onclick="myFunction1()"></div>
-        <div class="circleGreen" onclick="myFunction2()"></div>
-        <div class="circleRed" onclick="myFunction3()"></div>
-        <div class="circleBlue" onclick="myFunction4()"></div>
+        <div class="circleYellow" onclick="myFunction('Yellow')"></div>
+        <div class="circleGreen" onclick="myFunction('Green')"></div>
+        <div class="circleRed" onclick="myFunction('Red')"></div>
+        <div class="circleBlue" onclick="myFunction('Blue')"></div>
     </div>
 </body>
 

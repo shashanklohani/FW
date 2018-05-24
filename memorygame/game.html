@@ -1,0 +1,322 @@
+<html>
+
+<head>
+    <!-- <script src="game.js" type="text/javascript"></script> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <style>
+        .container {
+            min-width: 980px;
+            height: 840px;
+            display: flex;
+            justify-content: baseline;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .header {}
+
+        .score-panel {
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .stars {
+            list-style: none;
+            margin: 10px 5px 10px 20px;
+        }
+
+        .stars li {
+            display: inline;
+        }
+
+        .restart {
+            margin: 10px 30px 10px 50px;
+        }
+
+        .moves {
+            font-size: 48px;
+            margin: 6px 80px 10px 50px;
+        }
+
+        .card .material-icons {
+            font-size: 0px;
+            color: white;
+        }
+
+        .deck {
+            border-radius: 8px;
+            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+            padding: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin-top: 40px;
+            width: 660px;
+            min-height: 680px;
+            background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .card {
+            box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+            height: 20%;
+            width: 22%;
+            margin: auto;
+            background: gray;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script src="game.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+
+        var cardOpened = [];
+        var arrId = [];
+        var i = 3;
+
+        function refresh() {
+            var rndmNum;
+            for (count = 0; count < 16; count++) {
+                rndmNum = getRandomInt(1, 16);
+                document.getElementById("cardid" + rndmNum).style["order"] = rndmNum;
+            }
+
+            var deck = document.getElementsByClassName("deck");
+            for (count = 0; count < 16; count++) {
+                deck[count].style.pointerEvents = "auto";
+            }
+            clearScreen();
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // function shuffle(array) {
+
+        //     var currentIndex = array.length, temporaryValue, randomIndex;
+
+        //     while (currentIndex !== 0) {
+        //         randomIndex = Math.floor(Math.random() * currentIndex);
+        //         currentIndex -= 1;
+        //         temporaryValue = array[currentIndex];
+        //         array[currentIndex] = array[randomIndex];
+        //         array[randomIndex] = temporaryValue;
+        //     }
+
+        //     return array;
+        // }
+
+
+        function function1(num) {
+            var id = "cardid" + num;
+
+            // var elem = document.getElementById(id).getElementsByClassName("material-icons");
+            // var elemRec = document.getElementById(id).getElementsByClassName("material-icons");
+            openCard(id);
+
+            createListOpenCards(num);
+            arrId.push(id);
+            matchCard(arrId);
+
+            if (arrId.length / 2 == 8) {
+                finishGame();
+            }
+
+            if (i == 0) {
+                gameOver();
+            }
+        }
+
+        function openCard(id) {
+            var elem = document.getElementById(id).getElementsByClassName("material-icons");
+            elem[0].style["font-size"] = "33px";
+            document.getElementById(id).style["background"] = "blue";
+
+            // elem[0].style["background"] = "blue";
+            debugger;
+        }
+
+        function createListOpenCards(num) {
+            cardOpened.push(num);
+        }
+
+        function matchCard(arrId) {
+            debugger;
+            if (arrId.length % 2 == 0 && arrId.length > 0) {
+                debugger;
+                var doc1 = document.getElementById(arrId[arrId.length - 1]).getElementsByClassName("material-icons");
+                var txt1 = doc1[0].textContent;
+                var doc2 = document.getElementById(arrId[arrId.length - 2]).getElementsByClassName("material-icons");
+                var txt2 = doc2[0].textContent;
+
+                if (txt1 != txt2) {
+                    i--
+                    doc1[0].style["font-size"] = "0px";
+                    doc2[0].style["font-size"] = "0px";
+
+                    document.getElementById(arrId[arrId.length - 1]).style["background"] = "gray";
+                    document.getElementById(arrId[arrId.length - 2]).style["background"] = "gray";
+
+                    arrId.splice(arrId.length - 2, 2);
+
+                    var scoreSpan = document.getElementsByClassName("moves");
+                    scoreSpan[0].textContent = i + " Moves";
+
+                }
+            }
+        }
+
+        function gameOver() {
+            if (i == 0) {
+                swal("GAME OVER, YOUR SCORE IS " + arrId.length / 2);
+                var deck = document.getElementsByClassName("deck");
+
+                for (i = 0; i < 15; i++) {
+                    deck[i].style.pointerEvents = "none";
+                }
+            }
+        }
+
+        function finishGame() {
+            swal("YOUR SCORE IS 8");
+        }
+        var idS;
+        function clearScreen(){
+            var docCard = document.getElementsByClassName("deck");
+            for(count = 0; count <16 ; count++){
+                var docIcon = docCard[count].getElementsByClassName["material-icons"];
+                docIcon[0].style["font-size"] = "0px";
+            }
+            debugger;
+        }
+
+    </script>
+
+    <div class="container">
+        <header>
+            <h1>Matching Game</h1>
+        </header>
+        <section class="score-panel">
+            <ul class="stars">
+                <li>
+                    <i class="material-icons">
+                        stars
+                    </i>
+                </li>
+                <li>
+                    <i class="material-icons">
+                        stars
+                    </i>
+                </li>
+                <li>
+                    <i class="material-icons">
+                        stars
+                    </i>
+                </li>
+            </ul>
+
+            <span class="moves">3 Moves</span>
+            <div class="restart" onclick="refresh()">
+                <i class="material-icons">
+                    refresh
+                </i>
+            </div>
+        </section>
+
+        <ul class="deck">
+            <li id="cardid1" class="card" onclick="function1(1)">
+                <i class="material-icons">
+                    local_shipping
+                </i>
+            </li>
+            <li id="cardid2" class="card" onclick="function1(2)">
+                <i class="material-icons">
+                    airplanemode_active
+                </i>
+            </li>
+            <li id="cardid3" class="card" onclick="function1(3)">
+                <i class="material-icons">
+                    local_shipping
+                </i>
+            </li>
+            <li id="cardid4" class="card" onclick="function1(4)">
+                <i class="material-icons">
+                    airplanemode_active
+                </i>
+            </li>
+            <li id="cardid5" class="card" onclick="function1(5)">
+                <i class="material-icons">
+                    rowing
+                </i>
+            </li>
+            <li id="cardid6" class="card" onclick="function1(6)">
+                <i class="material-icons">
+                    insert_emoticon
+                </i>
+            </li>
+            <li id="cardid7" class="card" onclick="function1(7)">
+                <i class="material-icons">
+                    insert_emoticon
+                </i>
+            </li>
+            <li id="cardid8" class="card" onclick="function1(8)">
+                <i class="material-icons">
+                    cloud_queue
+                </i>
+            </li>
+            <li id="cardid9" class="card" onclick="function1(9)">
+                <i class="material-icons">
+                    headset
+                </i>
+            </li>
+            <li id="cardid10" class="card" onclick="function1(10)">
+                <i class="material-icons">
+                    cloud_queue
+                </i>
+            </li>
+            <li id="cardid11" class="card" onclick="function1(11)">
+                <i class="material-icons">
+                    rowing
+                </i>
+            </li>
+            <li id="cardid12" class="card" onclick="function1(12)">
+                <i class="material-icons">
+                    headset
+                </i>
+            </li>
+            <li id="cardid13" class="card" onclick="function1(13)">
+                <i class="material-icons">
+                    watch
+                </i>
+            </li>
+            <li id="cardid14" class="card" onclick="function1(14)">
+                <i class="material-icons">
+                    tag_faces
+                </i>
+            </li>
+            <li id="cardid15" class="card" onclick="function1(15)">
+                <i class="material-icons">
+                    tag_faces
+                </i>
+            </li>
+            <li id="cardid16" class="card" onclick="function1(16)">
+                <i class="material-icons">
+                    watch
+                </i>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
